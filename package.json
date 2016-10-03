@@ -1,0 +1,28 @@
+{
+  "name": "class-manager",
+  "version": "0.1.0",
+  "description": "Class Manager Application",
+  "main": "app.js",
+  "scripts": {
+    "test-root": "jasmine-node test/* --autotest --watch *.js --color --verbose --growl",
+    "test-modules": "jasmine-node **/test/* --autotest --watch **/* --color --verbose --growl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pauloantiquera/class-manager.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Neo4j",
+    "ExpressJS"
+  ],
+  "author": "Paulo Antiquera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pauloantiquera/class-manager/issues"
+  },
+  "homepage": "https://github.com/pauloantiquera/class-manager#readme",
+  "dependencies": {
+    "neo4j-driver": "^1.1.0-M02"
+  }
+}
