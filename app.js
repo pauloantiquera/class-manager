@@ -5,7 +5,8 @@ const AppEnvConfig = require('./envConfig/appEnvConfig');
 const appRunner = require('./appRunner');
 
 let appConfig = new AppEnvConfig(ENVDEF);
-// let dbContext = appConfig.createDbContext();
 
+let expressApp = appConfig.createExpressApp();
+let dbContext = appConfig.createDbContext();
 
-appRunner.run(appConfig);
+appRunner.run(expressApp);

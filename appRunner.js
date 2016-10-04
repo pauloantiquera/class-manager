@@ -1,9 +1,7 @@
 'use strict'
 
-function run(appConfig) {
-    let app = appConfig.createExpressApp();
-
-    app.listen();
+function run(expressApp) {
+    expressApp.listen();
 }
 
 let appRunner = {
