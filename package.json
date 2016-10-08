@@ -4,9 +4,10 @@
   "description": "Class Manager Application",
   "main": "app.js",
   "scripts": {
+    "test": "npm run test-modules",
     "test-root": "jasmine-node test/* --autotest --watch *.js --color --verbose --growl",
     "test-config": "jasmine-node envConfig/test/* --autotest --watch envConfig/* --color --verbose --growl",
-    "test-modules": "jasmine-node **/test/* --autotest --watch **/* --color --verbose --growl"
+    "test-modules": "jasmine-node modules/**/test/* --autotest --watch modules/**/* --color --verbose --growl"
   },
   "repository": {
     "type": "git",

@@ -11,9 +11,9 @@ function ExpressApp(envConfig) {
         });
     }
 
-    function addModule(path, moduleDescriptor) {
+    function addModule(path, moduleRouteConfig) {
         let router = express.Router();
-        let moduleRouter = moduleDescriptor(router);
+        let moduleRouter = moduleRouteConfig(router);
 
         app.use(path, moduleRouter);
     }
