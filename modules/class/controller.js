@@ -1,6 +1,6 @@
 'use strict'
 
-const ClassRepository = require('./classRepository');
+const ClassRepository = require('./ClassRepository');
 
 function ClassController() {
     const dbContext = global.dbContext;
