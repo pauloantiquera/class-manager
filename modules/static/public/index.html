@@ -1,0 +1,90 @@
+<html ng-app="ClassManagerApp">
+    <head>
+        <title>Class Manager</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Mobile support -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+        <!-- Bootstrap Material Design -->
+        <link href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet">
+
+        <link href="assets/css/classManagerApp.css" rel="stylesheet">
+
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+    </head>
+    <body>  
+        <div class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <strong>Class Manager</strong>
+                </a>
+                </div>
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                    <input type="text" class="form-control col-md-8" placeholder="Search">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)">Action</a></li>
+                        <li><a href="javascript:void(0)">Another action</a></li>
+                        <li><a href="javascript:void(0)">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)">Separated link</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ui-view></ui-view>
+        </div>
+
+        <!-- Twitter Bootstrap -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+        <!-- Material Design for Bootstrap -->
+        <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+        <script>
+            $.material.init();
+        </script>
+
+        <!-- AngularJS -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+        <!-- Class Manager App -->
+        <script src="app/classManager.module.js"></script>
+        <script src="app/classManager.assembly.js"></script>
+
+        <!-- Class Module -->
+        <script src="app/class/class.module.js"></script>
+        <script src="app/class/class.route.js"></script>
+        <script src="app/class/class.resource.js"></script>
+        <script src="app/class/classList.controller.js"></script>        
+    </body>
+</html>

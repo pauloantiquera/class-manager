@@ -1,9 +1,14 @@
 'use strict'
 
 const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 function ExpressApp(envConfig) {
     let app = express();
+
+    app.use(cors());
+    app.use(bodyParser.json());
 
     function listen() {
         app.listen(envConfig.port, function() {

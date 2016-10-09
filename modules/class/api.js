@@ -22,7 +22,7 @@ function classModuleConfig(modulePath) {
         return router;
     }
 
-    expressApp.addModule(modulePath || '/class', moduleRouteConfig);
+    expressApp.addModule(modulePath || '/classes', moduleRouteConfig);
 }
 
 module.exports = classModuleConfig;
