@@ -18,10 +18,13 @@
                     <td>{{class.id}}</td>
                     <td>{{class.description}}</td>
                     <td>{{class.year}}</td>
-                    <td class="btn-group-sm col-lg-2 text-center">
-                        <button class="btn btn-primary btn-fab"><i class="material-icons">edit</i></button>
-                        <button class="btn btn-danger btn-fab"><i class="material-icons">remove</i></button>
+                    <td class="btn-group-xs btn-group-raised col-lg-2 text-center">
+                        <button class="btn btn-primary" ng-click="classListCtrl.openModalForClassEditing(class)"><i class="material-icons">edit</i></button>
+                        <button class="btn btn-danger" ng-click="classListCtrl.removeClass(class)"><i class="material-icons">remove</i></button>
                     </td>
+                </tr>
+                <tr ng-if="!classListCtrl.hasClasses()">
+                    <td colspan="4" class="text-center text-primary"><strong>There is no classes to list</strong></td>
                 </tr>
             </tbody>
         </table>

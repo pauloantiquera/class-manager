@@ -31,8 +31,12 @@ function ClassController() {
         });
     }
 
+    function getIdFromRequest(request) {
+        return request.params.id;
+    }
+
     function doGet(request, response, next) {
-        let id = request.params.id;
+        let id = getIdFromRequest(request);
 
         classRepository.findById(id, function(error, clazz) {
             if (error)
@@ -44,17 +48,35 @@ function ClassController() {
             return response.status(204).end();
         });
     }
+
+    function doDelete(request, response, next) {
+        let id = getIdFromRequest(request);
+
+        classRepository.deleteById(id, function(error) {
+            if (error)
+                return response.status(400).send(error);
+
+            return response.status(204).end();
+        });
+    }
     
-    function notImplementedYet(request, response) {
-        response.send('Not implemented yet!');
+    function doUpdate(request, response, next) {
+        let id = getIdFromRequest(request);
+
+        classRepository.updateById(id, function(error) {
+            if (error)
+                return response.status(400).send(error);
+            
+            return response.status(204).end();
+        });
     }
 
     let classController = {
         findAll: doFindAll,
         get: doGet,
         create: doCreate,
-        update: notImplementedYet,
-        delete: notImplementedYet
+        update: doUpdate,
+        delete: doDelete
     };
 
     return classController;

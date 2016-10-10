@@ -16,6 +16,60 @@
         vm.classes = [];
         vm.hasClasses = hasClasses;
         vm.openModalForNewClass = openModalForNewClass;
+        vm.openModalForClassEditing = openModalForClassEditing;
+        vm.removeClass = removeClass;
+
+        function postRemoveAction() {
+            fillClasses();
+        }
+
+        function removeClass(clazz) {
+            clazz.$delete(
+                {id: clazz.id},
+                postRemoveAction,
+                postRemoveAction
+            );
+        }
+
+        function postUpdateAction() {
+            fillClasses();
+        }
+
+        function updateClass(clazz) {
+            clazz.$update(
+                postUpdateAction,
+                postUpdateAction
+            );
+        }
+
+        function createModalConfigObjectForEditing(modalTitle, clazz) {
+            let config = {
+                backdrop: 'static',
+                controller: 'classModalController as classModalCtrl',
+                resolve: {
+                    title: function() { return modalTitle },
+                    clazz: function() { 
+                        return classResource.get({id: clazz.id}).$promise; 
+                    }
+                },
+                templateUrl: '/app/class/classModal.html'
+            };
+
+            return config;
+        };
+
+        function openModalForClassEditing(clazz) {
+            let modalTitle = 'Editing Class';
+            let modalConfig = createModalConfigObjectForEditing(modalTitle, clazz);
+
+            let modalInstance = $uibModal.open(
+                modalConfig
+            );
+
+            modalInstance.result.then(
+                updateClass
+            );
+        }
 
         function hasClasses() {
             return vm.classes.length > 0;
@@ -32,15 +86,13 @@
         }
 
         function createNewClass(clazz) {
-            console.log(clazz);
-
             clazz.$save(
                 postSaveAction,
                 postSaveAction
             );
         }
 
-        function createModalConfigObject(modalTitle, clazz) {
+        function createModalConfigObjectForCreating(modalTitle, clazz) {
             let config = {
                 backdrop: 'static',
                 controller: 'classModalController as classModalCtrl',
@@ -57,7 +109,7 @@
         function openModalForNewClass() {
             let modalTitle = 'New Class';
             let clazz = new classResource();
-            let modalConfig = createModalConfigObject(modalTitle, clazz);
+            let modalConfig = createModalConfigObjectForCreating(modalTitle, clazz);
 
             let modalInstance = $uibModal.open(
                 modalConfig
