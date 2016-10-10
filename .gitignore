@@ -1,2 +1,3 @@
 node_modules
 modules/static/public/bower_components
+npm-debug.log

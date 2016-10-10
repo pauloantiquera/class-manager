@@ -4,6 +4,7 @@
     angular
         .module('class', [
             'ui.router',
-            'ngResource'
+            'ngResource',
+            'ui.bootstrap'
         ]);
 })();

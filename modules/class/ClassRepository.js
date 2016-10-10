@@ -28,8 +28,26 @@ function ClassRepository() {
             });
     }
 
+    function create(clazz, callback) {
+        let session = dbContext.getSession();
+
+        session
+            .run(`CREATE (clazz:Class {description: "${clazz.description}", year: "${clazz.year}"}) RETURN ID(clazz) as id, clazz.description as description, clazz.year as year`)
+            .then(function(result) {
+                let records = result.records;
+
+                let id = records[0].get('id').low;
+                let description = records[0].get('description');
+                let year = records[0].get('year');
+                let clazz = new Class(id, description, year);
+
+                callback(null, clazz);
+            });
+    }
+
     let classRepository = {
-        findAll: findAll
+        findAll: findAll,
+        create: create
     };
 
     return classRepository;
