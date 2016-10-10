@@ -73,8 +73,7 @@ function ClassRepository() {
         executeQueryWithoutReturn(query, callback);
     }
 
-    function update(clazz, callback) {
-        let query = 
+    function update(clazz, callback) {        
     }
 
     let classRepository = {
