@@ -57,7 +57,6 @@ function ClassRepository() {
         session
             .run(query)
             .then(function() {
-                console.log('teste');
                 callback(null);
             });
     }
