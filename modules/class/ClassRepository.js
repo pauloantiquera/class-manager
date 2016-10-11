@@ -5,7 +5,7 @@ const Class = require('./Class');
 function ClassRepository() {
     const dbContext = global.dbContext;
 
-    function processSingleResult(record) {        
+    function processResult(record) {        
         let id = record.get('id').low;
         let description = record.get('description');
         let year = record.get('year').low;
@@ -20,23 +20,23 @@ function ClassRepository() {
         session
             .run(query)
             .then(function(result) {
-                let clazz = processSingleResult(result.records[0]);
+                let clazz = processResult(result.records[0]);
 
                 callback(null, clazz);
             }); 
     }
 
-    function findAll(callback) {
+    function executeQueryAndReturnMultipleResult(query, callback) {
         let session = dbContext.getSession();
-            
+
         session
-            .run('MATCH (clazz:Class) RETURN ID(clazz) as id, clazz.description as description, clazz.year as year')
+            .run(query)
             .then(function(result) {
                 let classes = [];
                 let records = result.records;
 
                 for(let i = 0; i < records.length; i++) {
-                    let clazz = processSingleResult(records[i]);
+                    let clazz = processResult(records[i]);
 
                     classes.push(clazz);
                 }
@@ -45,12 +45,19 @@ function ClassRepository() {
             });
     }
 
+    function findAll(callback) {
+        let query = 'MATCH (clazz:Class) RETURN ID(clazz) as id, clazz.description as description, clazz.year as year'; 
+            
+        executeQueryAndReturnMultipleResult(query, callback);
+    }
+
     function executeQueryWithoutReturn(query, callback) {
         let session = dbContext.getSession();
 
         session
             .run(query)
             .then(function() {
+                console.log('teste');
                 callback(null);
             });
     }
@@ -73,7 +80,10 @@ function ClassRepository() {
         executeQueryWithoutReturn(query, callback);
     }
 
-    function update(clazz, callback) {        
+    function update(clazz, callback) { 
+        let query = `MATCH (clazz:Class) WHERE ID(clazz) = ${clazz.id} SET clazz.description = "${clazz.description}", clazz.year = ${clazz.year}`;
+
+        executeQueryWithoutReturn(query, callback);       
     }
 
     let classRepository = {
@@ -87,4 +97,4 @@ function ClassRepository() {
     return classRepository;
 }
 
-module.exports = ClassRepository;
+module.exports = ClassRepository;   

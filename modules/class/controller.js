@@ -62,13 +62,14 @@ function ClassController() {
     
     function doUpdate(request, response, next) {
         let id = getIdFromRequest(request);
+        let body = request.body;
 
-        classRepository.updateById(id, function(error) {
+        classRepository.update(body, function(error) {
             if (error)
                 return response.status(400).send(error);
             
             return response.status(204).end();
-        });
+        });            
     }
 
     let classController = {

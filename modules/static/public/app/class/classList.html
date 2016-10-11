@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <button class="pull-right btn btn-success btn-fab" ng-click="classListCtrl.openModalForNewClass()" title="Add new class"><i class="material-icons">add</i></button>
+        <button class="pull-right btn btn-success" ng-click="classListCtrl.openModalForNewClass()" title="Add new class"><i class="material-icons">add</i> NEW Class</button>
         <h2>Class List</h2>
     </div>
     <div class="panel-body">
@@ -18,7 +18,7 @@
                     <td>{{class.id}}</td>
                     <td>{{class.description}}</td>
                     <td>{{class.year}}</td>
-                    <td class="btn-group-xs btn-group-raised col-lg-2 text-center">
+                    <td class="btn-group-xs col-lg-2 text-center">
                         <button class="btn btn-primary" ng-click="classListCtrl.openModalForClassEditing(class)"><i class="material-icons">edit</i></button>
                         <button class="btn btn-danger" ng-click="classListCtrl.removeClass(class)"><i class="material-icons">remove</i></button>
                     </td>

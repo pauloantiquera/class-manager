@@ -37,6 +37,7 @@
 
         function updateClass(clazz) {
             clazz.$update(
+                {id: clazz.id},
                 postUpdateAction,
                 postUpdateAction
             );
